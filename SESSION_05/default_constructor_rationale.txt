@@ -1,0 +1,15 @@
+//Rational behind default constructor
+
+struct Date{
+    int day, month, year;
+}
+
+int n;
+struct Date myDate;
+
+T var_name;
+
+Date objDate;
+
+Date::Date(&objDate);
+
