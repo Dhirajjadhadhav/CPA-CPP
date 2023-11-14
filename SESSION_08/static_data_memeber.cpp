@@ -5,6 +5,10 @@ class Date{
         int day, month, year;
         static std::size_t object_count;
 
+        static bool is_date_valid(int dd, int mm, int yy)
+        {
+            
+        }
     public:
 
         Date()
@@ -76,3 +80,17 @@ int main(void)
 
 
 }
+
+/*
+    class data member:(non-static)
+        i) Time of allocation  = time of object allocaion
+        ii) Aloocation strategy = once per object
+        iii) LifeTime = LifeTime of object of which it is part
+        iv) Section = Section of object of which it is a part of
+
+    class data member :(static)
+        i) Time of allocation = static (at time of building an exe file)
+        ii) Allocatin strategy = once per class (shared within all object of class)
+        iii) lifetime = Lifetime of program (or process/or application)
+        iv) Section Linux(BSS), windows(DATA)
+*/

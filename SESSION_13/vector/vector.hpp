@@ -7,15 +7,18 @@ class vector{
         typedef long long int ssize_t;
         typedef long long int index_t;
         typedef enum status{
-                                SUCCESS = 1, INDEX_OUT_OF_BOUND,
-                            INVALID_SIZE, VECTOR_EMPTY}status_t;
+                                SUCCESS = 1, 
+                                INDEX_OUT_OF_BOUND,
+                                INVALID_SIZE, 
+                                VECTOR_EMPTY
+                            }status_t;
 
         //default constructor
         vector(); 
         //vector with pre-allocation          
-        vector(ssize_t N) ;
+        vector(ssize_t _N) ;
         //preallocation and initial value  
-        vector(ssize_t N, int val);  
+        vector(ssize_t _N, int val);  
         //vector initialized by another vector
         vector(const vector& other_vec);
         

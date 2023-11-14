@@ -35,5 +35,10 @@ int main(void){
     const int g_num = 100;
 
     100-> initializer
+    g_num ->identifier
+    int -> type anotation 
+    const qualification
 
+    int ->data type naav
+    const int -> data type naav
 */

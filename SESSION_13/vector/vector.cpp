@@ -1,11 +1,13 @@
 #include <iostream>
 #include <cstring>
+#include <cstdlib>
 #include "vector.hpp"
 
 vector::vector():arr(0), N(0){
+
 }
 
-vector::vector(ssize_t _N):arr(0){
+vector::vector(ssize_t _N){
     if(_N<=0){
         arr = 0;
         N = 0;
@@ -42,7 +44,7 @@ vector :: vector(ssize_t _N, int val)
 
 
 vector::vector(const vector& other_vec){
-    if(N)
+
     if(N>0){
          N = other_vec.N;
         arr = (int*)malloc(N * sizeof(int));
@@ -53,6 +55,7 @@ vector::vector(const vector& other_vec){
         memcpy(arr, other_vec.arr, N*sizeof(int));
     }
     else{
+        N = 0;
         arr = 0;
     }
 }
@@ -68,7 +71,7 @@ void vector::show(const char* msg)const
 
 vector :: ~vector()
 {
-    if(arr != 0){
+    if(arr){
         free(arr);
         arr = 0;
     }
@@ -91,9 +94,38 @@ vector::ssize_t vector::max_size()const{
 }
 
 vector::status_t vector::push_back(int new_val){
+    
+    arr = (int*)realloc(arr, (N+1)*sizeof(int));
+    if(0 == arr){
+        std::cout<<"fatal:error in growing array"<<std::endl;
+        exit(EXIT_FAILURE);
+    }
+    N = N+1;
+    arr[N-1] = new_val;
     return (SUCCESS);
 }
 
 vector::status_t vector::pop_back(int* p_data){
+    if(N == 0)
+        return VECTOR_EMPTY;
+    *p_data = arr[N-1];
+    if(N == 1)
+    {
+        free(arr);
+        arr = 0;
+        N = 0;
+    }
+    else{
+        arr = (int*)realloc(arr, (N-1)*sizeof(int));
+        if(0 == arr){
+            std::cout<<"fatal:error in shrinking the array"<<std::endl;
+            exit(EXIT_FAILURE);
+        }
+        N = N-1;
+    }
     return (SUCCESS);
 }
+
+
+//Quote 1: Talk is cheap, show me the code.- Linus Torvalds
+//Quote 2: God lies in the details. -Anton Gowdy.
